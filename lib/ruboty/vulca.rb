@@ -1,0 +1,5 @@
+require "ruboty/vulca/version"
+require "ruboty/handlers/serverlist"
+require "ruboty/handlers/cvelist"
+require "ruboty/handlers/scanlist"
+require "ruboty/handlers/cvedetail"
