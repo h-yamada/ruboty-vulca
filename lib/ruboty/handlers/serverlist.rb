@@ -18,14 +18,18 @@ module Ruboty
 
       conn = connection
       response = conn.get '/serverlist/'+cve
-      @json_response = JSON.parse(response.body)
+      begin
+        @json_response = JSON.parse(response.body)
 
-      res_message = ''
-      @json_response.each do |item|
-        res_message << item
-        res_message << "\n"
+        res_message = ''
+        @json_response.each do |item|
+          res_message << item
+          res_message << "\n"
+        end
+        message.reply(res_message)
+      rescue JSON::ParserError
+        message.reply(response.body)
       end
-      message.reply(res_message)
     end
   end
  end
