@@ -18,7 +18,8 @@ module Ruboty
 
       conn = connection
       response = conn.get '/cve/'+cveno
-      message.reply(response.body)
+      @json_response = JSON.parse(response.body)
+      message.reply(@json_response['Response'])
     end
   end
  end
